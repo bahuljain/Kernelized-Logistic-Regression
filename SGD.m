@@ -1,8 +1,16 @@
 function [W, iterations, costT] = SGD(Y, K, YT, KT, eta)
-%UNTITLED8 Summary of this function goes here
-%   Detailed explanation goes here
+%StochasticGradientDescent This function finds the optimum model by
+%incrementally updating the model using only one random point.
 
-%W = -1 + (2).*rand(1000,1);
+% Y - Vector of desired output values in training set 
+% K - gram matrix for training input values
+% YT - Vector of desired output values in test set
+% KT - gram matrix for test input values
+% eta - step size
+% costT - test cost iteration by iteration
+% W - model after BGD converges
+% iterations - number of iterations in which BGD converges
+
 n = length(Y);
 
 W = ones(1000,1);
