@@ -4,7 +4,7 @@ clc
 
 %% Loading Data 
 % I have already mapped the input points to Hilbert Space using kernel
-% function.
+% function. The code for that can be seen in Gram.m and Kappa.m
 load('workspace.mat');
 
 %% Batch Gradient Descent 
