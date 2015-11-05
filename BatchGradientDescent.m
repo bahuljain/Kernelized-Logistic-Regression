@@ -1,6 +1,14 @@
 function [W, iterations, costT] = BatchGradientDescent(Y,K,YT,KT,eta)
-%UNTITLED6 Summary of this function goes here
-%   Detailed explanation goes here
+%BatchGradientDescent This function finds the optimum model by
+%incrementally updating the model.
+
+% Y - Vector of desired output values in training set 
+% K - gram matrix for training input values
+% YT - Vector of desired output values in test set
+% KT - gram matrix for test input values
+% eta - step size
+
+
 n = length(Y);
 W = ones(1000,1);
 
