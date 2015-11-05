@@ -13,37 +13,28 @@ function [W, iterations, costT] = SGD100(Y, K, YT, KT, eta)
 
 n = length(Y);
 
-W = ones(n,1);
+W = ones(1000,1);
 
-%epsilon = 1e-2;
+epsilon = 1e-5;
 lambda = 1e-3;
 iterations = 0;
-minCost = 1e+11;
 
-%% Iteratively updating the model using stochastic gradient descent
 tic
-while toc < 10% && norm(delta) > epsilon
+while error > epsilon && toc < 10
     iterations = iterations + 1;
-    
-    %% Find cost and use the model corresponding to the minimum cost
     costT(iterations) = CostFunction(W, KT, YT);
-    if costT(iterations) < minCost
-        minCost = costT(iterations)
-        minModel = W; 
-    end
-    
+    disp(strcat(num2str(iterations), ' : ' , num2str(error)))
     sigma = Sigma(Y .* (W'*K)');
-    %% Randomly choosing 100 points
-    seq = randperm(n);
-    tmpK = K(seq(1:100),:);
-    tmpY = Y(seq(1:100));
-    tmpsigma = sigma(seq(1:100));
-    
-    %% Computing gradient and updating model
-    delta = (tmpK'*tmpY - tmpK'*(tmpY .* tmpsigma))/(-100)+ 2*lambda*W;
-    W = W - delta*eta;    
+    tmp = 0;
+    for j = 1:100
+        i = randi(1000);
+        tmp = tmp/100 + (-K(:,i)*Y(i) + K(:,i)*(Y(i)*sigma(i)));
+    end
+    delta = tmp + 2*lambda*W;
+    newW = W - delta*eta;
+    error = norm(newW - W);
+    W = newW;
 end
 toc
-W = minModel;
 end
 

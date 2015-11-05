@@ -1,4 +1,4 @@
-function [W, iterations, costT] = SGD(Y, K, YT, KT, eta)
+function [W, iterations, costT, minCost] = SGD(Y, K, YT, KT, eta)
 %StochasticGradientDescent This function finds the optimum model by
 %incrementally updating the model using only one random point.
 
@@ -13,27 +13,31 @@ function [W, iterations, costT] = SGD(Y, K, YT, KT, eta)
 
 n = length(Y);
 
-W = ones(1000,1);
-
-epsilon = 1e-2;
+W = ones(n,1);
+%epsilon = 1e-2;
 lambda = 1e-3;
+
 iterations = 0;
 sigma = Sigma(Y .* (W'*K)');
 i = randi(1000);
 delta = (-K(:,i)*Y(i) + K(:,i)*(Y(i)*sigma(i))) + 2*lambda*W;
+minModel = zeros(n,1);
+minCost = 1e+11;
 
 tic
-while norm(delta) > epsilon && toc < 10
-    iterations = iterations + 1
+while toc < 10%norm(delta) > epsilon% && toc < 10
+    iterations = iterations + 1;
     costT(iterations) = CostFunction(W, KT, YT);
-    cost = costT(iterations)
-    %disp(strcat(num2str(iterations), ' : ' , num2str(error)))
-    i = randi(1000);
+    if costT(iterations) < minCost
+        minCost = costT(iterations)
+        minModel = W; 
+    end
+    i = randi(n);
+    sigma = Sigma(Y .* (W'*K)');
     delta = (-K(:,i)*Y(i) + K(:,i)*(Y(i)*sigma(i))) + 2*lambda*W;
     W = W - delta*eta;
-    norm(delta)
-
 end
 toc
+W = minModel;
 end
 
