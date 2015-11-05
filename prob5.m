@@ -2,9 +2,9 @@ clear
 clc
 load('workspace.mat');
 
-% bgd - 1e-5
+% bgd - 1e-2
 % sgd - 1e-2
-% sgd100 - 1e-4
+% sgd100 - 1e-2
 
 [W, iterations, costT] = BatchGradientDescent(TrainingY, gram, TestY, gramTest, 1e-2);
 % i = 1:iterations;
