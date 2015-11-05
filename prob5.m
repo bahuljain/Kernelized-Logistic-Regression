@@ -6,7 +6,7 @@ load('workspace.mat');
 % sgd - 1e-2
 % sgd100 - 1e-2
 
-[W, iterations, costT] = BatchGradientDescent(TrainingY, gram, TestY, gramTest, 1e-2);
+% [W, iterations, costT] = BatchGradientDescent(TrainingY, gram, TestY, gramTest, 1e-2);
 % i = 1:iterations;
 % plot(i./iterations.*10, costT, 'r');
 % title('Test Cost vs Time for BGD, SGD(1 point), SGD(100 points)');

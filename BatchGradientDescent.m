@@ -19,6 +19,7 @@ lambda = 1e-3;
 delta = (K*Y - K*(Y .* Sigma(Y .* (W'*K)')))/(-n)+ 2*lambda*W;
 
 iterations = 0;
+
 tic
 while norm(delta) > epsilon% && toc<20% && iterations < 50000
     iterations = iterations + 1
