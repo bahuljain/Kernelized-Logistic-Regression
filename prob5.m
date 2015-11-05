@@ -1,5 +1,10 @@
+%% Driver Program for Kernelized Logistic Regression
 clear
 clc
+
+%% Loading Data 
+% I have already mapped the input points to Hilbert Space using kernel
+% function.
 load('workspace.mat');
 
 %% Batch Gradient Descent 

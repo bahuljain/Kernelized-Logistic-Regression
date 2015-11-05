@@ -21,11 +21,6 @@ iterations = 0;
 minModel = zeros(n,1);
 minCost = 1e+11;
 
-%% First Update
-sigma = Sigma(Y .* (W'*K)');
-i = randi(1000);
-delta = (-K(:,i)*Y(i) + K(:,i)*(Y(i)*sigma(i))) + 2*lambda*W;
-
 %% Iteratively updating the model using stochastic gradient descent with 1 random point
 tic
 while toc < 10
