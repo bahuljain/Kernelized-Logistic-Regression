@@ -7,7 +7,9 @@ function [W, iterations, costT] = BatchGradientDescent(Y,K,YT,KT,eta)
 % YT - Vector of desired output values in test set
 % KT - gram matrix for test input values
 % eta - step size
-
+% costT - test cost iteration by iteration
+% W - model after BGD converges
+% iterations - number of iterations in which BGD converges
 
 n = length(Y);
 W = ones(1000,1);
