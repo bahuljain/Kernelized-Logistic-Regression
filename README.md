@@ -1,7 +1,7 @@
 # Kernelized Logistic Regression
 Three flavors of gradient descent learning using a Kernel Function on high dimensional dataset...
 
-For more details about the implementation refer to Problem 5 of the Homework3.pdf file.
+For more details about the implementation refer to Problem 5 of the Homework 3.pdf file.
 
 The three flavors of gradient descent implemented are:
 
